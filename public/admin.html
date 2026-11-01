@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVS TOOLS | Enterprise Admin & Database Console</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- Auth Checking Overlay -->
+  <div class="auth-gate" id="authGate">
+    <div class="auth-gate-spinner">
+      <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+      <p>Verifying Admin Authentication...</p>
+    </div>
+  </div>
+
+  <div class="admin-wrapper" id="adminWrapper" style="display:none;">
+    <!-- Left Navigation Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="logo-mark">
+          <i class="fa-solid fa-wrench"></i>
+        </div>
+        <div class="logo-text">
+          <span class="brand-title">AVS <span class="text-accent">ADMIN</span></span>
+          <span class="brand-sub">DATABASE CONSOLE</span>
+        </div>
+      </div>
+
+      <!-- User Profile Badge -->
+      <div class="admin-user-card">
+        <div class="admin-avatar">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <div class="admin-user-info">
+          <div class="admin-user-name" id="adminUserName">AVS Administrator</div>
+          <div class="admin-user-role"><i class="fa-solid fa-circle-check"></i> Super Admin</div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="sidebar-nav">
+        <a href="#tab-overview" class="sidebar-link active" data-tab="tab-overview">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard Overview</span>
+        </a>
+        <a href="#tab-inventory" class="sidebar-link" data-tab="tab-inventory">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Hand Tools Inventory</span>
+          <span class="sidebar-badge" id="sidebarProdCount">0</span>
+        </a>
+        <a href="#tab-quotes" class="sidebar-link" data-tab="tab-quotes">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <span>B2B Quotations / RFQ</span>
+          <span class="sidebar-badge highlight" id="sidebarQuoteCount">0</span>
+        </a>
+        <a href="#tab-inquiries" class="sidebar-link" data-tab="tab-inquiries">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <span>Dealer Inquiries</span>
+          <span class="sidebar-badge" id="sidebarInqCount">0</span>
+        </a>
+        <a href="#tab-reviews" class="sidebar-link" data-tab="tab-reviews">
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <span>Customer Reviews</span>
+        </a>
+        <a href="#tab-database" class="sidebar-link" data-tab="tab-database">
+          <i class="fa-solid fa-server"></i>
+          <span>SQLite Database</span>
+        </a>
+        <a href="#tab-security" class="sidebar-link" data-tab="tab-security">
+          <i class="fa-solid fa-key"></i>
+          <span>Security & Password</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="/" target="_blank" class="sidebar-action-btn store-btn">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Customer Website</span>
+        </a>
+        <button class="sidebar-action-btn logout-btn" id="adminLogoutBtn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Admin Top Navbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <h2 class="topbar-title" id="topbarTitle">Dashboard Overview</h2>
+          <span class="topbar-date" id="topbarDate"></span>
+        </div>
+        <div class="topbar-right">
+          <!-- Live DB indicator -->
+          <div class="db-pill-btn" id="dbStatusBadge" title="Live SQLite Engine Status">
+            <span class="pulse-dot"></span>
+            <span id="dbStatusText">SQLite: Connected</span>
+          </div>
+          <button class="btn btn-primary btn-sm" id="topbarAddToolBtn">
+            <i class="fa-solid fa-plus"></i> Add Hand Tool
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-content-viewport">
+        <!-- ======================================================== -->
+        <!-- TAB 1: DASHBOARD OVERVIEW                                -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane active" id="tab-overview">
+          <!-- Metric Stat Cards -->
+          <div class="metrics-grid" id="dashboardMetrics">
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>TOTAL HAND TOOLS</span>
+                <i class="fa-solid fa-wrench metric-icon"></i>
+              </div>
+              <div class="metric-val" id="metricTotalProducts">--</div>
+              <div class="metric-sub" id="metricCatCount">Across 6 active categories</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>STOCK INVENTORY</span>
+                <i class="fa-solid fa-box-open metric-icon"></i>
+              </div>
+              <div class="metric-val" id="metricTotalStock">--</div>
+              <div class="metric-sub" id="metricValuation">Valuation: ₹0.00</div>
+            </div>
+
+            <div class="metric-card highlight">
+              <div class="metric-header">
+                <span>B2B RFQ QUOTATIONS</span>
+                <i class="fa-solid fa-file-invoice-dollar metric-icon"></i>
+              </div>
+              <div class="metric-val" id="metricTotalQuotes">--</div>
+              <div class="metric-sub" id="metricPendingQuotes">0 Pending response</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>DEALER INQUIRIES</span>
+                <i class="fa-solid fa-comments metric-icon"></i>
+              </div>
+              <div class="metric-val" id="metricTotalInquiries">--</div>
+              <div class="metric-sub" id="metricUnreadInquiries">0 Unread messages</div>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Diagnostic Overview -->
+          <div class="overview-grid">
+            <!-- Left: Recent Quotes -->
+            <div class="panel-box">
+              <div class="panel-header">
+                <div class="panel-title"><i class="fa-solid fa-clock-rotate-left"></i> Recent Quotation Requests</div>
+                <button class="btn btn-xs btn-outline" onclick="switchTab('tab-quotes')">View All Quotes</button>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Quote #</th>
+                      <th>Customer & City</th>
+                      <th>Items</th>
+                      <th>Estimated</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overviewQuotesTbody">
+                    <tr><td colspan="5" style="text-align:center;">Loading quotations...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Database Diagnostic Snapshot -->
+            <div class="panel-box">
+              <div class="panel-header">
+                <div class="panel-title"><i class="fa-solid fa-database"></i> Database Engine Status</div>
+                <button class="btn btn-xs btn-outline-accent" id="pingDbBtn"><i class="fa-solid fa-rotate"></i> Ping DB</button>
+              </div>
+              <div class="db-snapshot-box" id="dbSnapshotDetails">
+                Loading database details...
+              </div>
+              <div class="quick-shortcuts">
+                <button class="shortcut-btn" onclick="openAddToolModal()"><i class="fa-solid fa-plus"></i> Add Tool</button>
+                <button class="shortcut-btn" onclick="switchTab('tab-quotes')"><i class="fa-solid fa-list-check"></i> Process RFQ</button>
+                <button class="shortcut-btn" onclick="switchTab('tab-inquiries')"><i class="fa-solid fa-envelope"></i> Read Messages</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 2: INVENTORY & CRUD MANAGEMENT                       -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane" id="tab-inventory">
+          <div class="action-toolbar">
+            <div class="toolbar-left">
+              <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="adminInventorySearch" placeholder="Filter tools by model, SKU, or alloy...">
+              </div>
+              <select id="adminCatFilter" class="select-styled">
+                <option value="all">All Categories</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-outline" id="refreshInventoryBtn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+              <button class="btn btn-primary" onclick="openAddToolModal()"><i class="fa-solid fa-plus"></i> Add New Hand Tool</button>
+            </div>
+          </div>
+
+          <div class="panel-box">
+            <div class="table-responsive">
+              <table class="data-table" id="inventoryTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Photo</th>
+                    <th>Name & Model</th>
+                    <th>Category</th>
+                    <th>Material Alloy</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTbody">
+                  <!-- Populated via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 3: B2B QUOTATIONS & RFQ                              -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane" id="tab-quotes">
+          <div class="action-toolbar">
+            <div class="toolbar-left">
+              <h3 style="font-size:1.1rem;font-weight:700;">Customer Quotation Requests from Website</h3>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-outline" id="refreshQuotesBtn"><i class="fa-solid fa-rotate"></i> Refresh Quotes</button>
+            </div>
+          </div>
+
+          <div class="panel-box">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Quote Ref</th>
+                    <th>Date</th>
+                    <th>Buyer / Company</th>
+                    <th>Phone / WhatsApp</th>
+                    <th>Line Items</th>
+                    <th>Estimated Value</th>
+                    <th>Status</th>
+                    <th>Update Status</th>
+                  </tr>
+                </thead>
+                <tbody id="quotesTbody">
+                  <!-- Populated via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 4: DEALER INQUIRIES                                  -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane" id="tab-inquiries">
+          <div class="action-toolbar">
+            <div class="toolbar-left">
+              <h3 style="font-size:1.1rem;font-weight:700;">Distributor Applications & Contact Messages</h3>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-outline" id="refreshInquiriesBtn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+            </div>
+          </div>
+
+          <div class="panel-box">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Received</th>
+                    <th>Sender Info</th>
+                    <th>Inquiry Type & Subject</th>
+                    <th>Message Details</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="inquiriesTbody">
+                  <!-- Populated via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 5: CUSTOMER REVIEWS                                  -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane" id="tab-reviews">
+          <div class="action-toolbar">
+            <div class="toolbar-left">
+              <h3 style="font-size:1.1rem;font-weight:700;">Contractor Reviews & Ratings</h3>
+            </div>
+          </div>
+
+          <div class="panel-box">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Product Model</th>
+                    <th>Contractor / Author</th>
+                    <th>Rating</th>
+                    <th>Review Feedback</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="reviewsTbody">
+                  <!-- Populated via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 6: DATABASE ENGINE & HEALTH                          -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane" id="tab-database">
+          <div class="action-toolbar">
+            <div class="toolbar-left">
+              <h3 style="font-size:1.1rem;font-weight:700;">SQLite Database Engine Diagnostics</h3>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-outline-accent" id="dbHealthCheckFullBtn"><i class="fa-solid fa-stethoscope"></i> Run Diagnostics</button>
+            </div>
+          </div>
+
+          <div class="overview-grid">
+            <div class="panel-box">
+              <div class="panel-title" style="margin-bottom:14px;"><i class="fa-solid fa-circle-nodes"></i> SQLite Engine Specs</div>
+              <div class="db-spec-list">
+                <div class="db-spec-row"><span>Engine:</span> <strong>Node.js Native DatabaseSync</strong></div>
+                <div class="db-spec-row"><span>Database Path:</span> <code id="dbPathDisplay">data/avs_tools.db</code></div>
+                <div class="db-spec-row"><span>Storage File Size:</span> <strong id="dbFileSizeDisplay">-- KB</strong></div>
+                <div class="db-spec-row"><span>Journal Mode:</span> <strong>WAL (Write-Ahead Logging)</strong></div>
+                <div class="db-spec-row"><span>Foreign Keys:</span> <strong>Enabled (ON)</strong></div>
+                <div class="db-spec-row"><span>Process Uptime:</span> <strong id="dbUptimeDisplay">-- seconds</strong></div>
+              </div>
+            </div>
+
+            <div class="panel-box">
+              <div class="panel-title" style="margin-bottom:14px;"><i class="fa-solid fa-table"></i> Database Tables Record Counts</div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Table Name</th>
+                      <th>Purpose</th>
+                      <th>Row Count</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dbTablesCountTbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 7: ADMIN SECURITY & PASSWORD                         -->
+        <!-- ======================================================== -->
+        <section class="admin-tab-pane" id="tab-security">
+          <div class="panel-box" style="max-width:540px;">
+            <div class="panel-title" style="margin-bottom:8px;"><i class="fa-solid fa-shield-halved"></i> Update Admin Credentials</div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;">
+              Change your password for accessing the AVS Tools admin console.
+            </p>
+
+            <form id="changePasswordForm">
+              <div class="form-group">
+                <label for="oldPassword">Current Password *</label>
+                <input type="password" id="oldPassword" required placeholder="Enter current password">
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New Password (min 6 characters) *</label>
+                <input type="password" id="newPassword" required minlength="6" placeholder="Enter new password">
+              </div>
+              <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password *</label>
+                <input type="password" id="confirmNewPassword" required minlength="6" placeholder="Re-enter new password">
+              </div>
+              <button type="submit" class="btn btn-primary" id="savePasswordBtn">
+                <i class="fa-solid fa-check"></i> Update Admin Password
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: Add / Edit Hand Tool Modal                        -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="toolFormModal" style="display:none;">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="toolModalTitle"><i class="fa-solid fa-pen-to-square"></i> Add New Hand Tool</h3>
+        <button class="modal-close" onclick="closeToolModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="toolForm">
+          <input type="hidden" id="formToolId">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formToolName">Tool Name *</label>
+              <input type="text" id="formToolName" required placeholder="e.g. AVS Heavy Duty Spanner Set">
+            </div>
+            <div class="form-group">
+              <label for="formToolSku">SKU Code</label>
+              <input type="text" id="formToolSku" placeholder="e.g. AVS-SPN-10">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formToolBrand">Brand Name</label>
+              <input type="text" id="formToolBrand" placeholder="e.g. KONICA / NBH / AVS Tools">
+            </div>
+            <div class="form-group">
+              <label for="formToolCategory">Category</label>
+              <select id="formToolCategory" class="select-styled">
+                <option value="Spanners & Wrenches">Spanners & Wrenches</option>
+                <option value="Pliers & Grips">Pliers & Grips</option>
+                <option value="Shears & Snips">Shears & Snips</option>
+                <option value="Insulated Tools">Insulated Tools</option>
+                <option value="Striking & Hammers">Striking & Hammers</option>
+                <option value="Tool Sets & Kits">Tool Sets & Kits</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formToolPrice">Price (₹) *</label>
+              <input type="number" id="formToolPrice" required step="0.5" placeholder="450">
+            </div>
+            <div class="form-group">
+              <label for="formToolMrp">MRP (₹)</label>
+              <input type="number" id="formToolMrp" step="0.5" placeholder="650">
+            </div>
+            <div class="form-group">
+              <label for="formToolStock">Stock Units</label>
+              <input type="number" id="formToolStock" value="50">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formToolMaterial">Material Steel Grade</label>
+              <input type="text" id="formToolMaterial" placeholder="Drop Forged Chrome Vanadium (CR-V)">
+            </div>
+            <div class="form-group">
+              <label for="formToolSize">Size / Range</label>
+              <input type="text" id="formToolSize" placeholder="8 Inch (200mm)">
+            </div>
+            <div class="form-group">
+              <label for="formToolHardness">Hardness</label>
+              <input type="text" id="formToolHardness" placeholder="58 - 62 HRC">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formToolImagePreset">Select From Real User Product Photos</label>
+              <select id="formToolImagePreset" class="select-styled" style="margin-bottom:6px;">
+                <option value="">-- Or enter custom image path below --</option>
+                <option value="/images/products/konica-12pc-spanner-set.jpg">Konica 12pc Spanner Set</option>
+                <option value="/images/products/nbh-platinum-combination-plier.jpg">NBH Platinum CR-V 8" Plier</option>
+                <option value="/images/products/orange-spring-tin-snip.jpg">Orange Spring Metal Snip</option>
+                <option value="/images/products/red-long-nose-plier.jpg">Red Insulated Long Nose Plier</option>
+                <option value="/images/products/mr-silver-insulated-plier.jpg">Mr. Silver 500V Insulated Plier</option>
+                <option value="/images/products/adjustable-wrench.jpg">AVS Adjustable Wrench</option>
+                <option value="/images/products/machinist-hammer.jpg">AVS Machinist Hammer</option>
+              </select>
+              <input type="text" id="formToolImage" required placeholder="/images/products/konica-12pc-spanner-set.jpg">
+            </div>
+            <div class="form-group">
+              <label for="formToolBadge">Badge Tag</label>
+              <input type="text" id="formToolBadge" placeholder="e.g. BESTSELLER • CR-V">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="formToolDesc">Industrial Description</label>
+            <textarea id="formToolDesc" rows="3" placeholder="Technical specifications and design features..."></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline" onclick="closeToolModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="saveToolBtn">
+              <i class="fa-solid fa-floppy-disk"></i> Save to SQLite Database
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="adminToastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

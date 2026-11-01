@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVS TOOLS | Industrial Grade Hand Tools & Drop-Forged Hardware</title>
+  <meta name="description" content="AVS Tools manufactures and distributes industrial grade drop-forged hand tools, spanner sets, combination pliers, metal snips, and insulated electrical tools.">
+  <meta name="keywords" content="AVS tools, hand tools, spanners, combination pliers, tin snips, chrome vanadium, drop forged, hardware tools, B2B tools supplier">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Industrial Top Bar -->
+  <aside class="top-banner" aria-label="Announcement">
+    <div class="container top-banner-content">
+      <div class="top-banner-left">
+        <span class="badge-accent"><i class="fa-solid fa-industry"></i> FACTORY DIRECT</span>
+        <span>ISO 9001:2015 Certified Industrial Hand Tools & Hardware</span>
+      </div>
+      <div class="top-banner-right">
+        <span class="db-status-pill" id="headerDbStatus" title="SQLite Database Status">
+          <span class="pulse-dot"></span>
+          <span class="status-label">Database Connected</span>
+        </span>
+        <a href="tel:+919876543210" class="top-link"><i class="fa-solid fa-phone"></i> +91 98765 43210</a>
+        <a href="#b2b-section" class="top-link highlight"><i class="fa-solid fa-file-invoice"></i> B2B Wholesale</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="logo-mark">
+          <i class="fa-solid fa-wrench"></i>
+          <span class="logo-spark"></span>
+        </div>
+        <div class="logo-text">
+          <span class="brand-title">AVS <span class="text-accent">TOOLS</span></span>
+          <span class="brand-sub">FORGED FOR STRENGTH</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="headerSearchInput" placeholder="Search spanners, pliers, shears, CR-V tools..." autocomplete="off">
+        <button class="search-clear-btn" id="headerSearchClear" style="display:none;" aria-label="Clear Search">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="main-nav" id="mainNav">
+        <a href="#catalog" class="nav-link active">Catalog</a>
+        <a href="#quality" class="nav-link">Metallurgy & Quality</a>
+        <a href="#b2b-section" class="nav-link">Bulk Orders</a>
+        <a href="#dealership" class="nav-link">Distributor Program</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <!-- Admin Login Link -->
+        <a href="/login" class="btn btn-outline-admin" title="Staff Admin Login">
+          <i class="fa-solid fa-lock"></i>
+          <span>Admin Login</span>
+        </a>
+
+        <!-- Quote Cart Button -->
+        <button class="btn btn-cart" id="quoteCartBtn" aria-label="View Quotation Cart">
+          <div class="cart-icon-wrapper">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </div>
+          <span class="cart-text">Quote Request</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-backdrop" style="background-image: url('images/hero-banner.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge-row">
+        <span class="hero-pill"><i class="fa-solid fa-shield-halved"></i> 100% Drop-Forged Chrome Vanadium (CR-V)</span>
+        <span class="hero-pill secondary"><i class="fa-solid fa-award"></i> Lifetime Mechanical Warranty</span>
+      </div>
+      <h1 class="hero-title">
+        Industrial Hand Tools <br>
+        <span class="gradient-text">Forged For Extreme Durability.</span>
+      </h1>
+      <p class="hero-desc">
+        Engineered for automotive workshops, industrial plants, electrical technicians, and metal fabricators. High-tensile alloy steel, precision induction-hardened cutting jaws, and ergonomic grips tested to the highest torque standards.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#catalog" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-boxes-stacked"></i> Browse Hand Tools Catalog
+        </a>
+        <a href="#b2b-section" class="btn btn-glass btn-lg">
+          <i class="fa-solid fa-file-contract"></i> Request Wholesale B2B Quote
+        </a>
+      </div>
+
+      <!-- Quick Industrial Value Stats -->
+      <div class="hero-stats-grid">
+        <div class="hero-stat-card">
+          <div class="stat-number">48-62 <span class="stat-unit">HRC</span></div>
+          <div class="stat-label">Induction Hardened Jaws</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-number">100% <span class="stat-unit">CR-V</span></div>
+          <div class="stat-label">Chrome Vanadium Alloy</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-number">500V+ <span class="stat-unit">VDE</span></div>
+          <div class="stat-label">Certified Insulated Options</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-number">24 - 48h <span class="stat-unit">FAST</span></div>
+          <div class="stat-label">Nationwide Direct Dispatch</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Category Selector Bar -->
+  <section class="category-strip">
+    <div class="container">
+      <div class="category-pills-wrapper" id="categoryPillsContainer">
+        <!-- Populated via API -->
+        <button class="cat-pill active" data-category="all">
+          <i class="fa-solid fa-layer-group"></i> All Tools <span class="pill-count" id="pillCountAll">7</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Catalog Section -->
+  <section class="catalog-section" id="catalog">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header-flex">
+        <div>
+          <span class="section-tag"><i class="fa-solid fa-wrench"></i> AVS PRODUCT INVENTORY</span>
+          <h2 class="section-title">Professional Hand Tools Catalog</h2>
+          <p class="section-subtitle">Real-time inventory connected to the AVS Tools SQLite database engine.</p>
+        </div>
+        <!-- Live Database Badge -->
+        <div class="db-live-indicator">
+          <div class="db-dot"></div>
+          <div>
+            <div class="db-title">DATABASE ACTIVE</div>
+            <div class="db-info" id="catalogDbInfo">Loading records...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Sort Bar -->
+      <div class="catalog-controls">
+        <div class="controls-left">
+          <div class="control-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="catalogSearchInput" placeholder="Filter by name, material, SKU, or specs...">
+          </div>
+          <div class="filter-dropdown-wrapper">
+            <label for="filterCategorySelect" class="sr-only">Category</label>
+            <select id="filterCategorySelect" class="select-styled">
+              <option value="all">All Categories</option>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <div class="controls-right">
+          <div class="sort-wrapper">
+            <span class="sort-label"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort:</span>
+            <select id="catalogSortSelect" class="select-styled">
+              <option value="featured">Featured First</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="rating">Top Customer Rated</option>
+              <option value="name_asc">Name: A to Z</option>
+            </select>
+          </div>
+
+          <button class="btn btn-refresh" id="refreshCatalogBtn" title="Refresh from Database">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Rendered by app.js -->
+        <div class="grid-skeleton">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <i class="fa-solid fa-screwdriver-wrench empty-icon"></i>
+        <h3>No Hand Tools Match Your Filter</h3>
+        <p>Try resetting the search terms or selecting another category.</p>
+        <button class="btn btn-primary" id="resetFiltersBtn">Reset Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Quality & Metallurgy Section -->
+  <section class="quality-section" id="quality">
+    <div class="container">
+      <div class="section-center-header">
+        <span class="section-tag"><i class="fa-solid fa-microscope"></i> INDUSTRIAL METALLURGY</span>
+        <h2 class="section-title">The Engineering Behind AVS Tools</h2>
+        <p class="section-subtitle">Why automotive technicians, fabrication shops, and power plants choose AVS drop-forged tools over standard hardware.</p>
+      </div>
+
+      <div class="quality-grid">
+        <!-- Card 1 -->
+        <div class="quality-card">
+          <div class="quality-icon-box">
+            <i class="fa-solid fa-fire-burner"></i>
+          </div>
+          <h3 class="quality-card-title">Closed-Die Drop Forging</h3>
+          <p class="quality-card-desc">
+            Alloy billets heated to 1250°C and hammered between precision dies. This continuous metal grain structure yields up to 300% higher tensile strength compared to brittle cast tools.
+          </p>
+          <ul class="quality-specs-list">
+            <li><i class="fa-solid fa-check"></i> Zero internal porosity or micro-voids</li>
+            <li><i class="fa-solid fa-check"></i> High resistance to catastrophic fracturing under torque</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="quality-card">
+          <div class="quality-icon-box accent">
+            <i class="fa-solid fa-bolt-lightning"></i>
+          </div>
+          <h3 class="quality-card-title">Induction-Hardened Jaws</h3>
+          <p class="quality-card-desc">
+            High-frequency induction coils selectively temper cutting edges and gripping teeth up to 64 HRC, maintaining razor sharpness while keeping the tool body ductile and shock absorbent.
+          </p>
+          <ul class="quality-specs-list">
+            <li><i class="fa-solid fa-check"></i> Cuts piano wire, spring steel, and hardened cables</li>
+            <li><i class="fa-solid fa-check"></i> Precision cross-hatched non-slip teeth</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="quality-card">
+          <div class="quality-icon-box">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="quality-card-title">Multi-Layer Anti-Corrosion</h3>
+          <p class="quality-card-desc">
+            Satin chrome plating, manganese phosphating, and clear passivated coats seal tool surfaces against moisture, motor oil, grease, brake fluid, and harsh workshop environments.
+          </p>
+          <ul class="quality-specs-list">
+            <li><i class="fa-solid fa-check"></i> Salt-spray tested to 240+ hours</li>
+            <li><i class="fa-solid fa-check"></i> Anti-glare finish for bright shop lights</li>
+          </ul>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="quality-card">
+          <div class="quality-icon-box accent">
+            <i class="fa-solid fa-hand"></i>
+          </div>
+          <h3 class="quality-card-title">Ergonomic Anti-Fatigue Grips</h3>
+          <p class="quality-card-desc">
+            Dual-compound thermoplastic elastomers (TPR) and heavy-dip vinyl grips contoured to the human palm. Includes safety slip-stops and dielectric insulation up to 500V.
+          </p>
+          <ul class="quality-specs-list">
+            <li><i class="fa-solid fa-check"></i> High dielectric puncture resistance</li>
+            <li><i class="fa-solid fa-check"></i> Shock-reduction and oil-resistant grip</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comparison Matrix -->
+      <div class="comparison-container">
+        <h3 class="comparison-title">Material & Performance Comparison</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Specification Feature</th>
+                <th class="col-highlight">AVS Professional Tools</th>
+                <th>Standard Hardware Store Tools</th>
+                <th>Cheap Cast Steel Tools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Steel Alloy</strong></td>
+                <td class="col-highlight"><span class="badge-success">Drop-Forged Chrome Vanadium (CR-V)</span></td>
+                <td>Standard Carbon Steel (C45)</td>
+                <td>Recycled Cast Iron / Spheroidal Iron</td>
+              </tr>
+              <tr>
+                <td><strong>Cutting Hardness</strong></td>
+                <td class="col-highlight"><strong>60 - 64 HRC</strong> (Induction Hardened)</td>
+                <td>48 - 52 HRC</td>
+                <td>< 40 HRC (Dulls quickly)</td>
+              </tr>
+              <tr>
+                <td><strong>Torque Rating</strong></td>
+                <td class="col-highlight">Exceeds DIN/ISO specifications by 40%</td>
+                <td>Bare minimum ISO compliance</td>
+                <td>Prone to snapping under load</td>
+              </tr>
+              <tr>
+                <td><strong>Handle Grip</strong></td>
+                <td class="col-highlight">Dual-Color Ergonomic TPR / 500V Insulated</td>
+                <td>Single layer PVC sleeve</td>
+                <td>Thin hard plastic / Bare metal</td>
+              </tr>
+              <tr>
+                <td><strong>Warranty</strong></td>
+                <td class="col-highlight"><strong class="text-accent">Lifetime Mechanical Warranty</strong></td>
+                <td>30 to 90 Days Limited</td>
+                <td>No Warranty</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B Wholesale & RFQ Section -->
+  <section class="b2b-section" id="b2b-section">
+    <div class="container">
+      <div class="b2b-layout">
+        <div class="b2b-info-col">
+          <span class="section-tag"><i class="fa-solid fa-truck-ramp-box"></i> DIRECT FACTORY SUPPLY</span>
+          <h2 class="b2b-title">Wholesale B2B Pricing For Retailers & Contractors</h2>
+          <p class="b2b-lead">
+            AVS Tools supplies automotive repair networks, industrial fabrication units, and tool distributors across India. We offer volume-tiered discounts, custom laser branding for OEM bulk orders, and doorstep freight dispatch.
+          </p>
+
+          <div class="b2b-perks">
+            <div class="b2b-perk">
+              <i class="fa-solid fa-tags perk-icon"></i>
+              <div>
+                <h4>Tiered Volume Discounts</h4>
+                <p>15% off for 10-49 units, 25% off for 50-199 units, up to 40% off on full container & master carton lots.</p>
+              </div>
+            </div>
+
+            <div class="b2b-perk">
+              <i class="fa-solid fa-file-invoice-dollar perk-icon"></i>
+              <div>
+                <h4>GST Invoice & Tax Input Credit</h4>
+                <p>Full 18% GST invoice provided for all corporate and registered dealer purchases.</p>
+              </div>
+            </div>
+
+            <div class="b2b-perk">
+              <i class="fa-solid fa-boxes-packing perk-icon"></i>
+              <div>
+                <h4>Custom Packaging & Assortments</h4>
+                <p>Blister pack, display racks, metal toolboxes, and custom kit assortments tailored to your market.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fast B2B Quote Submission Form -->
+        <div class="b2b-form-col">
+          <div class="rfq-card">
+            <div class="rfq-header">
+              <div class="rfq-badge"><i class="fa-solid fa-bolt"></i> INSTANT RFQ</div>
+              <h3>Request Bulk Pricing Quotation</h3>
+              <p>Direct submission to AVS Tools SQLite database system.</p>
+            </div>
+
+            <form id="b2bQuickQuoteForm" class="rfq-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b2bName">Contact Name *</label>
+                  <input type="text" id="b2bName" required placeholder="e.g. Ramesh Patel">
+                </div>
+                <div class="form-group">
+                  <label for="b2bCompany">Company / Business Name *</label>
+                  <input type="text" id="b2bCompany" required placeholder="e.g. Patel Hardware & Tools">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b2bPhone">Mobile / WhatsApp *</label>
+                  <input type="tel" id="b2bPhone" required placeholder="+91 98765 00000">
+                </div>
+                <div class="form-group">
+                  <label for="b2bEmail">Business Email *</label>
+                  <input type="email" id="b2bEmail" required placeholder="buyer@company.com">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b2bToolInterest">Tool Category of Interest</label>
+                  <select id="b2bToolInterest" class="select-styled">
+                    <option value="All Products / General Assortment">All Products / Mixed Assortment</option>
+                    <option value="Spanner & Wrench Sets">Spanners & Wrench Sets (Konica 12pc, etc.)</option>
+                    <option value="Combination & Long Nose Pliers">Combination & Long Nose Pliers (NBH, Mr. Silver)</option>
+                    <option value="Sheet Metal Snips & Shears">Sheet Metal Snips & Shears</option>
+                    <option value="Complete Hardware Shop Starter Kit">Complete Hardware Shop Starter Stock</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="b2bVolume">Estimated Order Quantity</label>
+                  <select id="b2bVolume" class="select-styled">
+                    <option value="25 - 50 Pieces">25 - 50 Pieces (Tier 1)</option>
+                    <option value="50 - 200 Pieces">50 - 200 Pieces (Tier 2)</option>
+                    <option value="200+ Pieces">200+ Master Cartons (Tier 3 Factory Rate)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="b2bCity">Delivery City & State</label>
+                <input type="text" id="b2bCity" placeholder="e.g. Ahmedabad, Gujarat">
+              </div>
+
+              <div class="form-group">
+                <label for="b2bRemarks">Additional Specifications / Requirements</label>
+                <textarea id="b2bRemarks" rows="3" placeholder="Tell us about specific sizes, private labeling, or delivery deadlines..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="b2bSubmitBtn">
+                <i class="fa-solid fa-paper-plane"></i> Submit Quotation Request to Database
+              </button>
+              <div class="form-note">
+                <i class="fa-solid fa-lock"></i> Your business information is securely saved in the AVS Tools system.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dealership & Contact Section -->
+  <section class="dealership-section" id="dealership">
+    <div class="container">
+      <div class="dealership-box">
+        <div class="dealership-content">
+          <span class="section-tag"><i class="fa-solid fa-handshake"></i> PARTNER WITH US</span>
+          <h2>Become an Authorized AVS Tools Distributor</h2>
+          <p>
+            We are aggressively expanding our regional authorized dealer and distributor footprint across all states and industrial hubs. Enjoy exclusive territory protection, marketing collateral, point-of-sale display racks, and guaranteed healthy dealer margins.
+          </p>
+          <div class="dealer-stats">
+            <div><strong>250+</strong> Active Dealers</div>
+            <div><strong>18+</strong> States Covered</div>
+            <div><strong>100%</strong> Margin Guarantee</div>
+          </div>
+        </div>
+        <div class="dealership-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">Apply for Dealership</a>
+          <a href="tel:+919876543210" class="btn btn-outline-light btn-lg"><i class="fa-solid fa-phone"></i> Speak With Sales Head</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-center-header">
+        <span class="section-tag"><i class="fa-solid fa-envelope"></i> GET IN TOUCH</span>
+        <h2 class="section-title">Contact AVS Tools Headquarters</h2>
+        <p class="section-subtitle">Reach out for technical specifications, dealer inquiries, or custom tool requirements.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <h3>Factory & Administrative Office</h3>
+          <p class="contact-desc">
+            AVS Tools Manufacturing & Distribution Hub.<br>
+            Quality engineered for demanding industrial tasks.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Factory Address:</strong>
+                <p>Industrial Area, Phase II, Tool & Hardware Cluster, India</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Direct Sales & Orders:</strong>
+                <p>+91 98765 43210 / +91 91234 56789</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>Email Support:</strong>
+                <p>sales@avstools.com / info@avstools.com</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <i class="fa-solid fa-clock"></i>
+              <div>
+                <strong>Operating Hours:</strong>
+                <p>Monday – Saturday: 9:00 AM – 7:30 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Your Name *</label>
+                <input type="text" id="contactName" required placeholder="Full name">
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Your Email *</label>
+                <input type="email" id="contactEmail" required placeholder="email@domain.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactPhone">Phone Number</label>
+                <input type="tel" id="contactPhone" placeholder="+91...">
+              </div>
+              <div class="form-group">
+                <label for="contactSubject">Subject / Query Type</label>
+                <select id="contactSubject" class="select-styled">
+                  <option value="Dealership Application">Dealership / Distributorship Application</option>
+                  <option value="Bulk Purchasing">Bulk Purchasing Inquiry</option>
+                  <option value="Technical Specifications">Tool Technical Specifications</option>
+                  <option value="Warranty Claim">Warranty / Quality Support</option>
+                  <option value="Other">Other Inquiry</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message *</label>
+              <textarea id="contactMessage" rows="4" required placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">
+              <i class="fa-solid fa-paper-plane"></i> Send Message to AVS Tools
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-top">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-mark">
+            <i class="fa-solid fa-wrench"></i>
+          </div>
+          <div class="logo-text">
+            <span class="brand-title">AVS <span class="text-accent">TOOLS</span></span>
+            <span class="brand-sub">FORGED FOR STRENGTH</span>
+          </div>
+        </div>
+        <p class="footer-about">
+          AVS Tools is a manufacturer and distributor of industrial-grade hand tools, spanner sets, heavy-duty pliers, snips, and striking tools engineered for high torque and long service life.
+        </p>
+        <div class="footer-certifications">
+          <span><i class="fa-solid fa-check-double"></i> ISO 9001:2015</span>
+          <span><i class="fa-solid fa-shield"></i> CR-V Forged</span>
+          <span><i class="fa-solid fa-medal"></i> DIN 3113</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Hand Tools Catalog</h4>
+        <ul class="footer-links">
+          <li><a href="#catalog" data-cat="Spanners & Wrenches">Combination Spanners & Wrenches</a></li>
+          <li><a href="#catalog" data-cat="Pliers & Grips">Heavy Duty Pliers & Cutters</a></li>
+          <li><a href="#catalog" data-cat="Shears & Snips">Sheet Metal Snips & Shears</a></li>
+          <li><a href="#catalog" data-cat="Insulated Tools">500V / 1000V Insulated Tools</a></li>
+          <li><a href="#catalog" data-cat="Striking & Hammers">Machinist & Claw Hammers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Industrial Links</h4>
+        <ul class="footer-links">
+          <li><a href="#quality">Metallurgy & Quality Tests</a></li>
+          <li><a href="#b2b-section">B2B Wholesale Ordering</a></li>
+          <li><a href="#dealership">Authorized Dealership Network</a></li>
+          <li><a href="/login"><i class="fa-solid fa-lock"></i> Staff Admin Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Database Diagnostics</h4>
+        <div class="footer-db-box" id="footerDbWidget">
+          <div class="db-widget-header">
+            <span class="pulse-dot"></span>
+            <strong>SQLite Connected</strong>
+          </div>
+          <div class="db-widget-stat">Engine: <code>node:sqlite native</code></div>
+          <div class="db-widget-stat">Database: <code>avs_tools.db</code></div>
+          <div class="db-widget-stat" id="dbWidgetCount">Loading...</div>
+          <button class="btn btn-xs btn-outline-accent" id="dbHealthCheckBtn">
+            <i class="fa-solid fa-stethoscope"></i> Run DB Health Check
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 AVS TOOLS. All Rights Reserved. Professional Hand Tools & Industrial Hardware.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Supply</a>
+          <a href="#">Warranty Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: Product Quick View & Technical Specifications      -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="productModal" style="display:none;" aria-hidden="true">
+    <div class="modal-window product-modal-window">
+      <button class="modal-close-btn" id="productModalClose" aria-label="Close Product View">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-body product-modal-body" id="productModalContent">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- DRAWER: Quotation & Cart Drawer                          -->
+  <!-- ======================================================== -->
+  <div class="drawer-backdrop" id="cartDrawer" style="display:none;" aria-hidden="true">
+    <div class="drawer-panel cart-drawer-panel">
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <i class="fa-solid fa-clipboard-list drawer-icon"></i>
+          <div>
+            <h3>Quotation Request Cart</h3>
+            <p>AVS Tools Industrial B2B System</p>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="cartDrawerClose" aria-label="Close Cart">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-body" id="cartDrawerBody">
+        <!-- Cart Items List -->
+        <div class="cart-items-wrapper" id="cartItemsList">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- RFQ Submission Form -->
+        <div class="cart-checkout-section" id="cartCheckoutSection">
+          <h4 class="checkout-title"><i class="fa-solid fa-user-check"></i> Buyer Details for Official Quote</h4>
+          <form id="drawerRfqForm" class="drawer-form">
+            <div class="form-group">
+              <label for="drawerName">Full Name / Contact Person *</label>
+              <input type="text" id="drawerName" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="drawerCompany">Company / Business Name</label>
+              <input type="text" id="drawerCompany" placeholder="e.g. Acme Engineering Works">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="drawerPhone">Mobile / WhatsApp *</label>
+                <input type="tel" id="drawerPhone" required placeholder="+91 98765 00000">
+              </div>
+              <div class="form-group">
+                <label for="drawerEmail">Email Address *</label>
+                <input type="email" id="drawerEmail" required placeholder="contact@domain.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="drawerCity">City & State</label>
+                <input type="text" id="drawerCity" placeholder="City, State">
+              </div>
+              <div class="form-group">
+                <label for="drawerGst">GSTIN (Optional)</label>
+                <input type="text" id="drawerGst" placeholder="24AAAAA0000A1Z5">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="drawerNotes">Special Requirements / Notes</label>
+              <textarea id="drawerNotes" rows="2" placeholder="Custom branding, specific sizes, dispatch dates..."></textarea>
+            </div>
+
+            <!-- Total Bar -->
+            <div class="cart-summary-box">
+              <div class="summary-line">
+                <span>Total Items:</span>
+                <strong id="drawerTotalItems">0</strong>
+              </div>
+              <div class="summary-line highlight">
+                <span>Estimated Value:</span>
+                <strong id="drawerTotalAmount">₹0.00</strong>
+              </div>
+              <div class="summary-subnote">* Final price will include applicable wholesale volume tier discounts and freight terms.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="drawerSubmitBtn">
+              <i class="fa-solid fa-file-invoice"></i> Submit Quotation Request to Database
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>

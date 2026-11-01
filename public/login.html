@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal Login | AVS TOOLS Management System</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg-deep: #070a12;
+      --bg-card: rgba(15, 22, 38, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(245, 158, 11, 0.5);
+      --accent-primary: #f59e0b;
+      --accent-light: #fbbf24;
+      --cyan-accent: #38bdf8;
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger: #ef4444;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 10;
+    }
+    .login-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 40px 36px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.15);
+      backdrop-filter: blur(16px);
+    }
+    .brand-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #080c14;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+    }
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .brand-title span { color: var(--accent-primary); }
+    .portal-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrapper i.input-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .input-wrapper input {
+      width: 100%;
+      height: 46px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0 42px 0 42px;
+      color: #ffffff;
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .input-wrapper input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+    }
+    .toggle-pwd {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .toggle-pwd:hover { color: #ffffff; }
+    .btn-submit {
+      width: 100%;
+      height: 48px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #080c14;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(245, 158, 11, 0.5);
+    }
+    .error-alert {
+      display: none;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      align-items: center;
+      gap: 10px;
+    }
+    .credentials-chip {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 24px;
+      font-size: 0.825rem;
+    }
+    .chip-title {
+      color: var(--cyan-accent);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .chip-code {
+      font-family: 'JetBrains Mono', monospace;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .chip-code span strong { color: var(--accent-light); }
+    .auto-fill-btn {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-light);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .auto-fill-btn:hover { background: rgba(245, 158, 11, 0.25); }
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .back-home:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="brand-header">
+        <div class="logo-mark">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h1 class="brand-title">AVS <span>TOOLS</span></h1>
+        <p class="portal-subtitle">Secure Industrial Admin & Database Console</p>
+      </div>
+
+      <div class="error-alert" id="loginError">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="loginErrorText">Invalid username or password</span>
+      </div>
+
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="username">Admin Username</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input type="text" id="username" required autocomplete="username" placeholder="Enter username">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Admin Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="password" required autocomplete="current-password" placeholder="Enter password">
+            <button type="button" class="toggle-pwd" id="togglePwd" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye" id="toggleIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <i class="fa-solid fa-right-to-bracket"></i> Login to Admin Console
+        </button>
+      </form>
+
+      <!-- Default Credentials Box for immediate access -->
+      <div class="credentials-chip">
+        <div class="chip-title"><i class="fa-solid fa-key"></i> Authorized Admin Credentials</div>
+        <div class="chip-code">
+          <span>Username: <strong>admin</strong></span>
+          <span>Password: <strong>avstools2026</strong></span>
+        </div>
+        <button type="button" class="auto-fill-btn" id="autoFillBtn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-fill Demo Credentials
+        </button>
+      </div>
+
+      <a href="/" class="back-home">
+        <i class="fa-solid fa-arrow-left"></i> Return to AVS Tools Storefront
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Check if already authenticated
+    const existingToken = localStorage.getItem('avs_admin_token');
+    if (existingToken) {
+      fetch('/api/admin/verify', {
+        headers: { 'Authorization': `Bearer ${existingToken}` }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.authenticated) {
+          window.location.href = '/admin';
+        }
+      })
+      .catch(() => {});
+    }
+
+    // Password visibility toggle
+    const togglePwd = document.getElementById('togglePwd');
+    const pwdInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggleIcon');
+    togglePwd.addEventListener('click', () => {
+      const isPwd = pwdInput.type === 'password';
+      pwdInput.type = isPwd ? 'text' : 'password';
+      toggleIcon.className = isPwd ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+    });
+
+    // Auto-fill button
+    document.getElementById('autoFillBtn').addEventListener('click', () => {
+      document.getElementById('username').value = 'admin';
+      document.getElementById('password').value = 'avstools2026';
+    });
+
+    // Form submit
+    const loginForm = document.getElementById('adminLoginForm');
+    const loginError = document.getElementById('loginError');
+    const loginErrorText = document.getElementById('loginErrorText');
+    const submitBtn = document.getElementById('submitBtn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loginError.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Authentication failed');
+        }
+
+        // Store session token and admin details
+        localStorage.setItem('avs_admin_token', data.token);
+        localStorage.setItem('avs_admin_user', JSON.stringify(data.admin));
+
+        submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Access Granted!';
+        submitBtn.style.background = '#10b981';
+        setTimeout(() => {
+          window.location.href = '/admin';
+        }, 400);
+
+      } catch (err) {
+        loginError.style.display = 'flex';
+        loginErrorText.textContent = err.message;
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Login to Admin Console';
+      }
+    });
+  </script>
+</body>
+</html>
